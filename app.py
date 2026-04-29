@@ -1,38 +1,9 @@
 import streamlit as st
-from pypdf import PdfReader
-from sentence_transformers import SentenceTransformer
-import faiss
-import numpy as np
 
-
-# ---------- CACHED MODEL ----------
-@st.cache_resource
-def load_embedding_model():
-    return SentenceTransformer("all-MiniLM-L6-v2")
-
-
-# ---------- OVERLAP CHUNKING ----------
-def chunk_text(text, size=1000, overlap=200):
-    chunks = []
-    start = 0
-
-    while start < len(text):
-        end = start + size
-        chunks.append(text[start:end])
-        start += size - overlap
-
-    return chunks
-
-
-# ---------- RETRIEVAL ----------
-def retrieve_chunks(query, chunks, model, index, k=2):
-    q_emb = model.encode([query])
-
-    distances, indices = index.search(
-        np.array(q_emb).astype("float32"), k
-    )
-
-    return [chunks[i] for i in indices[0]]
+from app.ingest import extract_text
+from app.chunking import chunk_text
+from app.embeddings import build_index
+from app.retrieval import retrieve
 
 
 # ---------- PAGE ----------
@@ -97,7 +68,6 @@ uploaded_file = st.file_uploader(
     type="pdf"
 )
 
-
 chunks = None
 model = None
 index = None
@@ -108,18 +78,7 @@ if uploaded_file:
 
     st.success(f"Uploaded: {uploaded_file.name}")
 
-    reader = PdfReader(uploaded_file)
-
-    text = ""
-
-    for page in reader.pages:
-        extracted = page.extract_text()
-        if extracted:
-            text += extracted
-
-    # CLEAN TEXT
-    text = text.replace("\n", " ")
-    text = " ".join(text.split())
+    text = extract_text(uploaded_file)
 
     if text:
 
@@ -137,24 +96,14 @@ if uploaded_file:
             st.metric("Characters", len(text))
 
         with s2:
-            st.metric("Pages", len(reader.pages))
+            st.metric("Pages", "Loaded")
 
         with s3:
             st.metric("Chunks", len(chunks))
 
         # VECTOR INDEX
         with st.spinner("⚡ Building vector index..."):
-            model = load_embedding_model()
-
-            embeddings = model.encode(chunks)
-
-            dim = embeddings.shape[1]
-
-            index = faiss.IndexFlatL2(dim)
-
-            index.add(
-                np.array(embeddings).astype("float32")
-            )
+            model, index = build_index(chunks)
 
         st.success("Vector Index Ready ✅")
 
@@ -164,18 +113,15 @@ st.divider()
 
 st.markdown("""
 ### 💬 Ask Questions
-            
+
 💡 Example:
 - Summarize this document
 - What are the main topics?
 - Explain key concepts
-""")            
+""")
 
 with st.form("qa_form"):
-    query = st.text_input(
-        "Type your question..."
-    )
-
+    query = st.text_input("Type your question...")
     submitted = st.form_submit_button("Ask AI")
 
 
@@ -191,7 +137,7 @@ if submitted:
 
         with st.spinner("🧠 Thinking..."):
 
-            top_chunks = retrieve_chunks(
+            top_chunks = retrieve(
                 query,
                 chunks,
                 model,
