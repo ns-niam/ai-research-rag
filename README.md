@@ -1,3 +1,5 @@
+
+````md
 # AI Research RAG — Production-Grade Document Intelligence System
 
 <div align="center">
@@ -24,9 +26,9 @@ Traditional language models generate answers without direct access to source doc
 
 This project addresses that limitation by implementing a **Retrieval-Augmented Generation (RAG)** pipeline that ensures responses are:
 
-* grounded in source data
-* traceable to document context
-* more reliable for research use
+- grounded in source data
+- traceable to document context
+- more reliable for research use
 
 ---
 
@@ -36,10 +38,10 @@ The system transforms static PDFs into a **queryable semantic knowledge base**.
 
 Core capabilities:
 
-* ingest and process research papers
-* convert text into dense vector representations
-* perform similarity-based retrieval
-* generate answers conditioned on retrieved context
+- ingest and process research papers
+- convert text into dense vector representations
+- perform similarity-based retrieval
+- generate answers conditioned on retrieved context
 
 ---
 
@@ -55,7 +57,7 @@ Top-K Relevant Chunks
 Context Assembly
    ↓
 Generator (Context-Aware Response)
-```
+````
 
 ### Extended Pipeline
 
@@ -128,24 +130,48 @@ This significantly reduces hallucination and improves factual alignment.
 
 ```text
 ai-research-rag/
-│
 ├── app.py
 ├── requirements.txt
 ├── README.md
-│
-├── app/
-│   ├── ingest.py
-│   ├── chunking.py
-│   ├── embeddings.py
-│   ├── retrieval.py
-│
+├── LICENSE
+├── demo/
+│   └── rag-demo.mp4
 ├── screenshots/
-│   └── ui.png
+│   ├── tree.png
+│   ├── ui-home.png
+│   └── query-result.png
+└── app/
+    ├── ingest.py
+    ├── chunking.py
+    ├── embeddings.py
+    └── retrieval.py
 ```
 
 ---
 
-## 8. Example Queries
+## 8. Demo Video
+
+[Watch the full demo video](demo/rag-demo.mp4)
+
+---
+
+## 9. Screenshots
+
+### Project Structure
+
+![Project Tree](screenshots/tree.png)
+
+### UI Home
+
+![UI Home](screenshots/ui-home.png)
+
+### Query Result
+
+![Query Result](screenshots/query-result.png)
+
+---
+
+## 10. Example Queries
 
 * Summarize the paper
 * What are the main contributions?
@@ -155,10 +181,10 @@ ai-research-rag/
 
 ---
 
-## 9. Execution
+## 11. Execution
 
 ```bash
-git clone https://github.com/your-username/ai-research-rag.git
+git clone https://github.com/ns-niam/AI-Research-RAG.git
 cd ai-research-rag
 
 pip install -r requirements.txt
@@ -167,7 +193,7 @@ streamlit run app.py
 
 ---
 
-## 10. Engineering Highlights
+## 12. Engineering Highlights
 
 * Designed a **modular RAG pipeline** with clear separation of responsibilities
 * Implemented **semantic retrieval using FAISS** for efficient similarity search
@@ -177,7 +203,7 @@ streamlit run app.py
 
 ---
 
-## 11. Performance Considerations
+## 13. Performance Considerations
 
 * Retrieval complexity reduced via FAISS indexing
 * Memory-efficient embedding storage
@@ -186,7 +212,7 @@ streamlit run app.py
 
 ---
 
-## 12. Future Extensions
+## 14. Future Extensions
 
 * Integration with LLMs (GPT, Gemini, local models)
 * Multi-document and cross-document retrieval
@@ -197,27 +223,29 @@ streamlit run app.py
 
 ---
 
-## 13. Resume Summary
+## 15. Resume Summary
 
 Built a production-grade Retrieval-Augmented Generation (RAG) system for research document understanding using semantic embeddings and FAISS vector search. Designed a modular AI pipeline including ingestion, chunking, embedding, indexing, and retrieval to generate context-grounded responses.
 
 ---
 
-## 14. License
+## 16. License
 
 © 2026 Md Sha Niamatullah. All Rights Reserved.
 
-This project is proprietary software. Unauthorized usage, copying, or distribution is strictly prohibited.
+This project is proprietary software. Unauthorized usage, copying or distribution is strictly prohibited.
 
 ---
 
-## 15. Author
+## 17. Author
 
 Md Sha Niamatullah
 AI / ML Engineering Student
 
 ---
 
-## 16. Status
+## 18. Status
 
 Stable, functional, and ready for demonstration.
+
+````
