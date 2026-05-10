@@ -17,6 +17,19 @@ A modular AI system that enables **semantic search, contextual retrieval, and gr
 </div>
 
 ---
+## 🎥 Demo Video
+
+A complete walkthrough of the AI Research RAG system including:
+
+- PDF ingestion
+- semantic retrieval
+- contextual querying
+- Streamlit interface
+- end-to-end RAG workflow
+
+### ▶ Watch Demo
+
+[![Watch Demo](screenshots/ui-home.png)](demo/rag-demo.mp4)
 
 ## 1. Problem Statement
 
