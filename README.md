@@ -1,5 +1,3 @@
-
-````md
 # AI Research RAG — Production-Grade Document Intelligence System
 
 <div align="center">
@@ -57,7 +55,6 @@ Top-K Relevant Chunks
 Context Assembly
    ↓
 Generator (Context-Aware Response)
-````
 
 ### Extended Pipeline
 
