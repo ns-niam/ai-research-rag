@@ -1,3 +1,4 @@
+
 # AI Research RAG — Production-Grade Document Intelligence System
 
 <div align="center">
@@ -30,7 +31,7 @@ A complete walkthrough of the AI Research RAG system including:
 ### ▶ Watch Demo
 
 [![Watch Demo](screenshots/ui-home.png)](demo/rag-demo.mp4)
-
+https://github.com/user-attachments/assets/4cdcf3d9-d588-44c0-800f-e668f036f326
 ## 1. Problem Statement
 
 Traditional language models generate answers without direct access to source documents, leading to **hallucinations and unverifiable outputs**.
