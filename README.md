@@ -1,5 +1,5 @@
 
-# AI Research RAG — Production-Grade Document Intelligence System
+# AI Research RAG  (Production-Grade Document Intelligence System)
 
 <div align="center">
 
