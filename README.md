@@ -31,7 +31,7 @@ A complete walkthrough of the AI Research RAG system including:
 ### ▶ Watch Demo
 
 [![Watch Demo](screenshots/ui-home.png)](https://github.com/user-attachments/assets/4cdcf3d9-d588-44c0-800f-e668f036f326)
-https://github.com/user-attachments/assets/4cdcf3d9-d588-44c0-800f-e668f036f326
+
 
 ## 1. Problem Statement
 
@@ -163,7 +163,7 @@ ai-research-rag/
 
 ## 8. Demo Video
 
-[Watch the full demo video](demo/rag-demo.mp4)
+[Watch the full demo video](https://github.com/user-attachments/assets/4cdcf3d9-d588-44c0-800f-e668f036f326)
 
 ---
 
